@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victory Bank</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #f0f4c3, #b2dfdb);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        header nav ul li {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding-top: 5px;
+        }
+
+        header nav ul li .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            z-index: 1000;
+        }
+
+        header nav ul li .dropdown a {
+            color: #000;
+            padding: 10px 20px;
+            display: block;
+            text-decoration: none;
+        }
+
+        header nav ul li:hover .dropdown {
+            display: block;
+        }
+
+        header nav ul li .dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+
+        header .lang-switcher {
+            display: flex;
+            align-items: center;
+        }
+
+        header .lang-switcher a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .login {
+            display: flex;
+            align-items: center;
+        }
+
+        .login a {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .logo img {
+            width: 45px;
+            height: auto;
+        }
+
+        .login img {
+            width: 27px;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .custom-card {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero {
+            display: flex;
+                align-items: center;
+
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.3);
+            text-align: center;
+            margin: 10px 0;
+            padding: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin: 15px 0;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            padding: 25px 0;
+        }
+
+        .hero-image img {
+            width: 300px; /* adjust the size as needed */
+            height: auto;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+        }
+
+        .card input,
+        .card select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .modal button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .modal button:hover {
+            background-color: #45a049;
+        }
+
+        .card img {
+            width: 30px; /* Adjusted size */
+            height: auto;
+            margin-bottom: -8px;
+        }
+
+        .card .input-button-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .card input[type="text"] {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .card a {
+            display: inline-block;
+        }
+
+        .number-img img {
+            width: 70px;
+            height: auto;
+            margin-right: 10px;
+            margin-top: -3px;
+        }
+
+        .card-image {
+            background-color: #EAEAEA;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .card-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .card h3 {
+            margin: 5px 0;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0px;
+            margin-top: 4px;
+        }
+
+        .input-group select {
+            width: 20%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+
+        .input-group input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+
+        }
+
+        .button-wrapper {
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .button-wrapper img {
+            width: 50px;
+            height: auto;
+            cursor: pointer;
+            margin-right: 470px;
+        }
+
+        .revers-image {
+            width: 1100px;
+            height: auto;
+            margin-right: 500px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        header nav ul li:hover .dropdown {
+            display: block;
+            z-index: 1000;
+        }
+
+        header nav ul li:hover .overlay {
+            display: block;
+        }
+
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .footer-content {
+            flex: 1;
+        }
+
+        .footer-content p {
+            margin: 0;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-image {
+            margin-left: 20px;
+        }
+
+        .footer-image img {
+            vertical-align: middle;
+        }
+
+        .transparent-input,
+        .transparent-select {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            background-color:
+            padding: 8px 0;
+            width: calc(100% - 40px);
+            margin-right: 10px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .transparent-select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.29 8.29a1 1 0 0 0-1.29.12l-3 3a1 1 0 1 0 1.41 1.41l2.29-2.3 2.29 2.3a1 1 0 1 0 1.41-1.41l-3-3a1 1 0 0 0-.7-.29z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            padding-right: 24px;
+        }
+
+        .transparent-select:focus {
+            border-bottom-color: #666;
+        }
+
+        .transparent-select::placeholder {
+            color: #999;
+            font-style: italic;
+        }
+
+        .container-right {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+        }
+
+        .container-right img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Общие стили для модальных окон */
+.modal {
+    display: none; /* По умолчанию скрыто */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный фон */
+}
+
+.modal-content {
+    background-color: #eaeaea; /* Новый цвет фона */
+    color: #333; /* Новый цвет текста */
+    /* Дополнительные стили по желанию */
+    border: 2px solid #ccc; /* Пример рамки вокруг контента */
+    border-radius: 8px; /* Пример закругления углов */
+}
+
+.close {
+    color: #fff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Стили для модального окна чата */
+#chatModal {
+    width: 80%;
+    max-width: 400px; /* Максимальная ширина */
+}
+
+/* Стили для модального окна логина */
+#loginModal {
+    width: 80%;
+    max-width: 400px; /* Максимальная ширина */
+}
+
+/* Дополнительные стили для формы логина */
+#loginModal form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#loginModal form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+#loginModal form input[type="text"],
+#loginModal form input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+#loginModal form button {
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#loginModal form button:hover {
+    background-color: #45a049;
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="static/main/img/logo.png" alt="Victory Bank Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Гаманець</a></li>
+                <li>
+                    <a href="" id="serviceButton">Сервіс <img src="static/main/img/arrow_up.png" alt="arrow_up"></a>
+                    <div id="" class="modal">
+                    <div class="side-drawer-service" id="serviceDrawer">
+                        <div class="close" id="closeServiceDrawer">&times;</div>
+                    </div>
+                    </div>
+                </li>
+                <li><a href="">Архів</a></li>
+                <li><a href="about">Кастомізація</a></li>
+                <li><a href="">Про нас</a></li>
+            </ul>
+        </nav>
+        <div class="lang-switcher">
+            <a href="">UA <img src="static/main/img/arrow_up.png" alt="arrow_up"></a>
+        </div>
+        <div class="login">
+            <a href="#" id="openLogin"><img src="static/main/img/login_icon.png" alt="Вхід"></a>
+        </div>
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeLogin">&times;</span>
+                <!-- Ваш контент для формы входа здесь -->
+                <h2>Вхід в особистий кабінет</h2>
+                <form action="/login" method="post">
+                    <label for="username">Логін:</label>
+                    <input type="text" id="username" name="username">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password">
+                    <button type="submit">Увійти</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Victory Bank</h1>
+                <p>Вітаємо у Victory Bank! Ми — український банк та Ваш надійний фінансовий партнер. Заснований на принципах чесності, прозорості та інновацій, Victory Bank пропонує широкий спектр банківських послуг для фізичних осіб та бізнесу.</p>
+            </div>
+            <div class="hero-image">
+                <img src="static/main/img/phone.png" alt="Поповнення мобільного">
+            </div>
+        </section>
+        <section class="cards">
+            <div class="card">
+                <h3><img src="static/main/img/card_transfer.png" alt="Переказ на картку"> Переказ на картку</h3>
+                <div class="input-button-group">
+                    <input type="text" class="transparent-input" placeholder="0000 0000 0000 0000">
+                    <a href="" class="container-right"><img src="static/main/img/container_right.png" alt="Перевести"></a>
+                </div>
+                <p>VISA/MasterCard українських та закордонних банків</p>
+            </div>
+
+            <div class="card">
+                <h3><img src="static/main/img/mobile_recharge.png" alt="Поповнення мобільного"> Поповнення мобільного</h3>
+                <div class="input-button-group">
+                    <a href="" class="number-img"><img src="static/main/img/number.png" alt="380+"></a>
+                    <input type="text" class="transparent-input" placeholder="00-000-00-00">
+                    <a href="" class="container-right"><img src="static/main/img/container_right.png" alt="Перевести"></a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><img src="static/main/img/custom_card.png" alt="Унікальна картка"> Унікальна картка</h3>
+                <div class="card-image">
+                    <a href="test" class="card-d-button">
+                        <img src="static/main/img/card_d.png" alt="card_d">
+                    </a>
+                </div>
+                <h3>Власний дизайн</h3>
+                <p>5% від суми кожної покупки ми передаємо на підтримку ЗСУ</p>
+            </div>
+
+            <div class="card">
+                <h3><img src="static/main/img/currency_converter.png" alt="Конвертор валют"> Конвертор валют</h3>
+                <div class="input-group">
+                    <select class="transparent-select">
+                        <option value="USD">$</option>
+                        <option value="EUR">€</option>
+                    </select>
+                    <input type="number" class="transparent-input" placeholder="200.00">
+                </div>
+                <img src="static/main/img/revers.png" alt="Конвертор валют" class="revers-image">
+                <div class="input-group">
+                    <select class="transparent-select">
+                        <option value="UAH">₴</option>
+                        <option value="RUB">₽</option>
+                    </select>
+                    <input type="number" class="transparent-input" placeholder="200.00">
+                </div>
+            </div>
+        </section>
+    </div>
+<footer class="footer">
+    <div class="footer-content">
+        <p>
+            <a href="">Відділення</a>
+            <a href="">Регламент тарифів</a>
+            <a href="">Про персональні дані</a>
+            <a href="">Безпека</a>
+            <a href="">API</a>
+        </p>
+        <p>
+            3785 Безкоштовно з мобільних &nbsp;|&nbsp; +38-075-756-13-35 &nbsp;|&nbsp; для дзвінків за кордону
+        </p>
+        <p>&copy; 2024 Victory Bank. Ліцензія № 24 від 05.10.2023</p>
+    </div>
+    <div class="footer-image">
+        <a href="#" id="openChat"><img src="static/main/img/chat.png" alt="техпідтримка"></a>
+    </div>
+    <div id="chatModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeChat">&times;</span>
+        <h2>Чат з техпідтримкою</h2>
+        <input type="text">
+    </div>
+    </div>
+    <script>
+        var chatModal = document.getElementById('chatModal');
+        var openChatBtn = document.getElementById('openChat');
+        var closeChatBtn = document.getElementById('closeChat');
+
+        openChatBtn.addEventListener('click', function() {
+            chatModal.style.display = 'block';
+        });
+
+        closeChatBtn.addEventListener('click', function() {
+            chatModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == chatModal) {
+                chatModal.style.display = 'none';
+            }
+        });
+        // Получаем ссылки на элементы
+
+        var loginModal = document.getElementById('loginModal');
+        var openLoginBtn = document.getElementById('openLogin');
+        var closeLoginBtn = document.getElementById('closeLogin');
+
+        // Открываем модальное окно логина при клике на кнопку
+        openLoginBtn.addEventListener('click', function() {
+            loginModal.style.display = 'block';
+        });
+
+        // Закрываем модальное окно логина при клике на крестик
+        closeLoginBtn.addEventListener('click', function() {
+            loginModal.style.display = 'none';
+        });
+
+        // Закрываем модальное окно логина при клике вне модального окна
+        window.addEventListener('click', function(event) {
+            if (event.target == loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+            document.addEventListener('DOMContentLoaded', function() {
+        const serviceButton = document.getElementById('serviceButton');
+        const serviceModal = document.getElementById('serviceModal');
+        const closeButton = serviceModal.querySelector('.close');
+
+        serviceButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            serviceModal.style.display = 'block';
+        });
+
+        closeButton.addEventListener('click', function() {
+            serviceModal.style.display = 'none';
+        });
+
+        // Закрытие модального окна при клике вне него
+        window.addEventListener('click', function(event) {
+            if (event.target === serviceModal) {
+                serviceModal.style.display = 'none';
+            }
+        });
+    });
+        document.addEventListener('DOMContentLoaded', function() {
+    const serviceDrawer = document.getElementById('serviceDrawer');
+    const serviceButton = document.getElementById('serviceButton');
+    const closeServiceDrawer = document.getElementById('closeServiceDrawer');
+
+    serviceButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        serviceDrawer.classList.add('open'); // Открываем шторку
+    });
+
+    closeServiceDrawer.addEventListener('click', function(event) {
+        event.preventDefault();
+        serviceDrawer.classList.remove('open'); // Закрываем шторку
+    });
+});
+
+    </script>
+</footer>
+</body>
+</html>

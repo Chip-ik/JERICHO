@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victory Bank - Кастомізація</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #f0f4c3, #b2dfdb);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        header nav ul li {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding-top: 5px;
+        }
+
+        header nav ul li .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            z-index: 1000;
+        }
+
+        header nav ul li .dropdown a {
+            color: #000;
+            padding: 10px 20px;
+            display: block;
+            text-decoration: none;
+        }
+
+        header nav ul li:hover .dropdown {
+            display: block;
+        }
+
+        header nav ul li .dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+
+        header .lang-switcher {
+            display: flex;
+            align-items: center;
+        }
+
+        header .lang-switcher a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .login {
+            display: flex;
+            align-items: center;
+        }
+
+        .login a {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .logo img {
+            width: 45px;
+            height: auto;
+        }
+
+        .login img {
+            width: 27px;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .custom-card {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-card img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .custom-card .info {
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .custom-card .info h2 {
+            margin: 10px 0;
+        }
+
+        .custom-card .info p {
+            font-size: 1.2em;
+        }
+
+        .custom-card .info button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .description {
+            text-align: center;
+            margin: 20px 0;
+            padding: 35px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .description h3 {
+            margin: 10px 0;
+        }
+
+        .description p {
+            font-size: 1.2em;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .footer-content {
+            flex: 1;
+        }
+
+        .footer-content p {
+            margin: 0;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-image {
+            margin-left: 20px;
+        }
+
+        .footer-image img {
+            vertical-align: middle;
+        }
+
+        .custom-card .image-slider img {
+            width: 200%;
+            height: auto;
+            max-width: 500px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="static/main/img/logo.png" alt="Victory Bank Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Гаманець</a></li>
+                <li>
+                    <a href="#">Сервіс <img src="static/main/img/arrow_up.png" alt="arrow_up"></a>
+                    <div class="dropdown">
+                        <a href="#"><img src="static/main/img/transfers.png" alt="Сервіс 1">Сервіс 1<img src="static/main/img/right_b.png" alt="Сервіс 1"></a>
+                        <a href="#"><img src="static/main/img/payments.png" alt="Сервіс 2">Сервіс 2<img src="static/main/img/right_b.png" alt="Сервіс 2"></a>
+                        <a href="#"><img src="static/main/img/communication.png" alt="Сервіс 3">Сервіс 3<img src="static/main/img/right_b.png" alt="Сервіс 3"></a>
+                    </div>
+                </li>
+                <li><a href="#">Архів</a></li>
+                <li><a href="about">Кастомізація</a></li>
+                <li><a href="#">Про нас</a></li>
+            </ul>
+        </nav>
+        <div class="lang-switcher">
+            <a href="#">UA <img src="static/main/img/arrow_up.png" alt="arrow_up"></a>
+        </div>
+        <div class="login">
+            <a href="#"><img src="static/main/img/login_icon.png" alt="Вхід"></a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="custom-card">
+            <div class="image-slider">
+                <img src="static/main/img/custom-card.png" alt="Custom Card Design">
+            </div>
+            <div class="info">
+                <h2>Зробіть свій власний дизайн</h2>
+                <p>Вартість послуги кастомізації складає 300 гривень. 5% від суми кожної покупки ми передаємо на підтримку ЗСУ.</p>
+                <button type="button" onclick="window.location.href='{% url 'test' %}'">Вибрати кастомізацію</button>
+            </div>
+        </section>
+
+        <section class="description">
+            <h3>Опис:</h3>
+            <p>
+                У Victory Bank ми пропонуємо унікальну послугу кастомізації карток, яка дозволяє вам створити картку, що відображає вашу індивідуальність. Оберіть власний дизайн, додайте фотографії, символи або інші елементи, які зроблять вашу картку унікальною. Наша мета – зробити ваші фінансові операції ще зручнішими, а підтримка ЗСУ – наш пріоритет.
+            </p>
+            <p>
+                Вартість послуги кастомізації складає 300 гривень. Підтримка Збройних Сил України. Ми пишаємося тим, що можемо підтримати нашу армію в важкий час. 5% від суми кожної покупки ми передаємо на підтримку Збройних Сил України. Разом ми можемо зробити більше для нашої спільної перемоги!
+            </p>
+            <p>
+                Дякуємо за ваш вибір і довіру. Ваш фінансовий опорний пункт з Victory Bank – це внесок у майбутнє України!
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>
+                <a href="#">Відділення</a>
+                <a href="#">Регламент тарифів</a>
+                <a href="#">Про персональні дані</a>
+                <a href="#">Безпека</a>
+                <a href="#">API</a>
+            </p>
+            <p>
+                3785 Безкоштовно з мобільних &nbsp;|&nbsp; +38-075-756-13-35 &nbsp;|&nbsp; для дзвінків за кордону
+            </p>
+            <p>&copy; 2024 Victory Bank. Ліцензія № 24 від 05.10.2023</p>
+        </div>
+        <div class="footer-image">
+            <a href="#"><img src="static/main/img/chat.png" alt="техпідтримка"></a>
+        </div>
+    </footer>
+</body>
+</html>
